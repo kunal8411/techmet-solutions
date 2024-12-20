@@ -1,101 +1,144 @@
-import Image from "next/image";
+import Head from 'next/head'
+import Link from 'next/link'
+import WhyUs from './whyus/page';
+import Features from './features/page';
+import PricingPlan from './pricingplan/page';
+import ProjectsPage from './ourprojects/page';
+import TestimonialsPage from './testimonials/page';
+import OurTeam from './ourteam/page';
+import ClientsInfo from './clientsinfo/page';
+import ConnectUs from './connectus/page';
+import Footer from './footer/page';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Head>
+        <title>Base - Next.js SaaS Template</title>
+        <meta name="description" content="Next.js SaaS Boilerplate Template with Landing Page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <div className="min-h-screen bg-[#1a1f2e]">
+        {/* Header/Navigation */}
+        <header className="flex items-center justify-between px-8 py-4">
+          <div className="flex items-center">
+            <div className="text-white text-2xl font-bold flex items-center">
+              <div className="bg-blue-600 p-2 rounded-lg mr-2">⚡</div>
+              Base
+            </div>
+          </div>
+          
+          <nav className="hidden md:flex items-center space-x-6 text-gray-400">
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="/features">Features</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/pages">Pages</Link>
+            <Link href="/support">Support</Link>
+          </nav>
+
+          <div className="flex items-center space-x-4">
+            <button className="text-white hover:text-blue-500 transition-colors">
+              Sign In
+            </button>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              Sign Up
+            </button>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <main className="container mx-auto px-8 py-16 flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Next.js SaaS Boilerplate Template with Landing Page
+            </h1>
+            <p className="text-gray-400 mb-8">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla
+              magna mauris. Nulla fermentum viverra sem eu rhoncus consequat
+              varius nisi quis, posuere magna.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Get Started Now
+              </button>
+              <div>
+                <p className="text-white font-semibold">Call us (0123) 456 - 789</p>
+                <p className="text-gray-400 text-sm">For any question or concern</p>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        {/* Features Section */}
+        <section className="container mx-auto px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <FeatureCard 
+              title="Cutting-edge Features"
+              description="Lorem ipsum dolor sit amet conse adipiscing elit."
+              bgColor="bg-pink-500"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+            <FeatureCard 
+              title="10+ Useful Integrations"
+              description="Lorem ipsum dolor sit amet conse adipiscing elit."
+              bgColor="bg-green-500"
+            />
+            <FeatureCard 
+              title="High-quality Modern Design"
+              description="Lorem ipsum dolor sit amet conse adipiscing elit."
+              bgColor="bg-orange-500"
+            />
+          </div>
+        </section>
+      </div>
+      <div>
+        <WhyUs/>
+
+      </div>
+      <div>
+        <Features/>
+
+      </div>
+      <div>
+        <PricingPlan/>
+      </div>
+      <div>
+        <ProjectsPage/>
+      </div>
+      <div>
+        <TestimonialsPage/>
+      </div>  
+      <div>
+        <OurTeam/>
+      </div>
+      <div>
+        <ClientsInfo/>
+      </div>
+      <div>
+        <ConnectUs/>
+      </div>
+      <div>
+        <Footer/>
+      </div>
+    </>
+  )
 }
+
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  bgColor: string;
+}
+
+const FeatureCard = ({ title, description, bgColor }: FeatureCardProps) => (
+  <div className="text-white">
+    <div className={`${bgColor} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>
+      <svg className="w-6 h-6" /* Add your icon SVG here */ />
+    </div>
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <p className="text-gray-400">{description}</p>
+  </div>
+) 
